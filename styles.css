@@ -1,38 +1,45 @@
 body {
-  background-color:#19073e;
+  background-color:#ececf1;
   margin: 0;
   height: 100%;
   font-family: Arial, Helvetica, sans-serif;
 }
 .header{
-  background-color: #210c4e ;
+  background-color: #04AA6D ;
   overflow: hidden;
 }
-.header p{
+.header h1{
   text-align: center;
   font-size: 25px;
-  color: white;
+  color: #ecfff1;
 }
 .navbar{
-  background-color: #210c4e ;
-  height: 100%;
-  width: 200px;
-  overflow: hidden;
+  background-color: #04AA6D ;
+  position: absolute;
+  height: 200% ;
+  width: 12%;
 }
 .navbar a {
   display: flex;
   flex-direction: column;
-  color: #f2f2f2;
+  color: #ecfff1;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
 }
 .navbar a:hover {
-  background-color: #ddd;
+  background-color: #00ff85;
   color: black;
 }
 .navbar a.active {
-  background-color: #04AA6D;
+  background-color:  #ecb602 ;
   color: white;
+}
+.box{
+  margin-left: 13%;
+  margin-right:1%;
+}
+#intro{
+  text-align:center;
 }
