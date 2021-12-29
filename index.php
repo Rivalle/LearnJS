@@ -9,13 +9,12 @@
   <div class="header">
     <h1>Αρχική Σελίδα</h1>
   </div>
-  <div class="navbar">
-    <a class="active" href="index.html">Αρχική σελίδα</a>
-    <a href="announcement.html">Ανακοινώσεις</a>
-    <a href="communication.html">Επικοινωνία </a>
-    <a href="documents.html">Έγραφα μαθήματος</a>
-    <a href="homework.html">Εργασίες </a>
-  </div>
+  
+  <!-- navigation bar -->
+  <?php
+        include_once 'navBar.php';
+  ?>
+
   <div id="intro" class="box">
     <h2>Μάθε Javascript!</h2>
     <p>Ο ευκολότερος τρόπος για να μάθετε και να εξασκηθείτε στη σύγχρονη JavaScript,

@@ -9,13 +9,12 @@
     <div class="header">
       <h1>Ανακοινώσεις</h1>
     </div>
-    <div class="navbar">
-      <a class="active" href="index.html">Αρχική σελίδα</a>
-      <a href="announcement.html">Ανακοινώσεις</a>
-      <a href="communication.html">Επικοινωνία </a>
-      <a href="documents.html">Έγραφα μαθήματος</a>
-      <a href="homework.html">Εργασίες </a>
-    </div>
+   
+  <!-- navigation bar -->
+  <?php
+        include_once 'navBar.php';
+  ?>
+
     <div class="box news">
       <h2>Ανακοίνωση 1</h2>
       <p><strong>Ημερομηνία</strong>: 11/01/2022</p>

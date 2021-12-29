@@ -9,13 +9,12 @@
     <div class="header">
       <h1>Έγγραφα μαθήματος</h1>
     </div>
-    <div class="navbar">
-      <a class="active" href="index.html">Αρχική σελίδα</a>
-      <a href="announcement.html">Ανακοινώσεις</a>
-      <a href="communication.html">Επικοινωνία </a>
-      <a href="documents.html">Έγραφα μαθήματος</a>
-      <a href="homework.html">Εργασίες </a>
-    </div>
+    
+  <!-- navigation bar -->
+  <?php
+        include_once 'navBar.php';
+  ?>
+
     <div class="box doc">
       <h2>Τίτλος εγγράφου</h2>
       <p>Περιγραφή: Περιγραφή του περιεχομένου</p>
