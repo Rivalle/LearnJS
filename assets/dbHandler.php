@@ -4,7 +4,7 @@
 $serverName = "localHost";
 $dBUserName = "root";
 $dBPassword = "";
-$dBName = "healthspotting";
+$dBName = "learnjs";
 
 $conn = mysqli_connect($serverName,$dBUserName,$dBPassword,$dBName);
 
