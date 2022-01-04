@@ -74,7 +74,6 @@
     <?php
           $sql = "SELECT * FROM announcements;";
           $result = mysqli_query($conn,$sql);
-          $sum = 1;
           while ($row = mysqli_fetch_assoc($result)) {
             echo "<h2>Ανακοίνωση " . $row['id']+1 . ":</h2>" 
             . "<form action='assets/annAsset.php' method='post'><button id='delete' name='delete' type='delete' value='" . $row['id']+1 . "'>Delete</button></form>"

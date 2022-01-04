@@ -17,17 +17,19 @@
 
     <div class="box">
       <div class="container">
-       <form action="#">
-         <label for="reciever">Αποστολέας</label>
-         <input type="text" id="fname" name="reciever">
+       <form action="assets/contactAsset.php" method="post">
+
          <label for="subject">Θέμα</label>
          <input type="text" id="subject" name="subject">
+
          <label for="message">Κείμενο</label>
          <textarea id="message" name="message" style="height:200px"></textarea>
-         <input type="submit" value="Submit">
+
+         <input type="submit" name="submit">
+
        </form>
       </div>
-      <p>Εναλλακτικά μπορείτε να αποστείλετε e-mail στην παρακάτω διεύθυνση ηλεκτρονικού ταχυδρομείου <a href="#">tutor@csd.auth.test.gr</a>.</p>
+      <p>Εναλλακτικά μπορείτε να στείλετε e-mail στην παρακάτω διεύθυνση ηλεκτρονικού ταχυδρομείου <a href="#">tutor@csd.auth.test.gr</a>.</p>
     </div>
 
    <button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
