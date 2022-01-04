@@ -13,6 +13,12 @@
   <!-- navigation bar -->
   <?php
         include_once 'navBar.php';
+        if ($_SESSION["userAdmin"] == true){
+          echo "this is admin";
+        }
+        else{
+          echo "this is STUDENT";
+        }
   ?>
 
   <div id="intro" class="box">

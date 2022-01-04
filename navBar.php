@@ -9,4 +9,5 @@
     <a href="communication.php">Επικοινωνία </a>
     <a href="documents.php">Έγραφα μαθήματος</a>
     <a href="homework.php">Εργασίες </a>
+    <a href="assets/logout.php">Αποσύνδεση </a>
   </div>

@@ -17,7 +17,7 @@
 
     <div class="box">
       <div class="container">
-       <form action="action_page.php">
+       <form action="#">
          <label for="reciever">Αποστολέας</label>
          <input type="text" id="fname" name="reciever">
          <label for="subject">Θέμα</label>

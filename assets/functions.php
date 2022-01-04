@@ -120,6 +120,7 @@ function loginUser($conn, $useremail, $pass){
     session_start();
     $_SESSION["userid"] = $emailexists["usersId"];
     $_SESSION["useremail"] = $emailexists["usersEmail"];
+    $_SESSION["userAdmin"] = $emailexists["userAdmin"];
     header("location: ../start.php");
     exit();
   }
