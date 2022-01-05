@@ -14,6 +14,10 @@
   <?php
         include_once 'navBar.php';
         require_once 'assets/dbhandler.php';
+        if (!$_SESSION["useremail"]){
+          header("location: Index.php");
+          exit();
+        }
   ?>
 
   <div class="box news">

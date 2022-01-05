@@ -2,7 +2,6 @@
 <?php
 
 require_once 'dbhandler.php';
-require_once 'functions.php';
 
 if (isset($_POST["submit"])) {
   if($_POST["submit"] == "new"){
@@ -24,7 +23,7 @@ if (isset($_POST["submit"])) {
     header("location: ../announcement.php?new" . $_POST["submit"]);
   }
   else if($_POST["submit"] == "manage"){
-    $id = $_POST["id"]-1;
+    $id = $_POST["id"];
     $subject = $_POST["subject"];
     $text = $_POST["text"];
     $date = date('d/m/Y');
@@ -36,14 +35,23 @@ if (isset($_POST["submit"])) {
     else{
       $chbox = 0;
     }
-    
-    $query = "UPDATE `announcements` SET `date` = '$date', `subject` = '$subject', `text` = '$text', `assignment` = '$chbox' WHERE `announcements`.`id` = '$id';";
-    $queryrun = mysqli_query($conn,$query);
-    header("location: ../announcement.php?managed" . $_POST["submit"]);
+
+    if(!empty($subject)){
+      $query = "UPDATE `announcements` SET `subject` = '$subject' WHERE `announcements`.`id` = '$id';";
+      $queryrun = mysqli_query($conn,$query);
     }
+    if(!empty($text)){
+      $query = "UPDATE `announcements` SET `text` = '$text' WHERE `announcements`.`id` = '$id';";
+      $queryrun = mysqli_query($conn,$query);
+    }
+    
+    $query = "UPDATE `announcements` SET `date` = '$date', `assignment` = '$chbox' WHERE `announcements`.`id` = '$id';";
+    $queryrun = mysqli_query($conn,$query);
+    header("location: ../announcement.php?managed");
+  }
 }
 else if (isset($_POST["delete"])){
-  $id = $_POST["delete"]-1;
+  $id = $_POST["delete"];
   $query = "DELETE FROM announcements WHERE id = '$id';";
   $queryrun = mysqli_query($conn,$query);
   header("location: ../announcement.php?deletedannouncement");

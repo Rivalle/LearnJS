@@ -50,14 +50,14 @@
       <form action="assets/annAsset.php" class="form-container" method="post">
         <h1>Τροποποίηση ανακοίνωσης</h1>
 
-        <label for="assignment"><b>Επιλέξτε ποιά ανακοίνωση θέλετε να τροποποιήσετε</b></label>
+        <label for="id"><b>Επιλέξτε ποιά ανακοίνωση θέλετε να τροποποιήσετε</b></label>
         <input type="text" name="id" required>
 
         <label for="subject"><b>Νέο θέμα</b></label>
-        <input type="text" name="subject" required>
+        <input type="text" name="subject">
 
         <label for="text"><b>Νέο περιεχόμενο</b></label>
-        <textarea type="text" name="text" rows=6 required></textarea>
+        <textarea type="text" name="text" rows=6></textarea>
 
         <div>
           <input type="checkbox" name ="checkbox" id="checkbox" value="true">
@@ -75,8 +75,8 @@
           $sql = "SELECT * FROM announcements;";
           $result = mysqli_query($conn,$sql);
           while ($row = mysqli_fetch_assoc($result)) {
-            echo "<h2>Ανακοίνωση " . $row['id']+1 . ":</h2>" 
-            . "<form action='assets/annAsset.php' method='post'><button id='delete' name='delete' type='delete' value='" . $row['id']+1 . "'>Delete</button></form>"
+            echo "<h2>Ανακοίνωση " . $row['id'] . ":</h2>" 
+            . "<form action='assets/annAsset.php' method='post'><button id='delete' name='delete' type='delete' value='" . $row['id'] . "'>Delete</button></form>"
             . "<p><strong>Ημερομηνία</strong>: " . $row['date'] . "</p>" 
             . "<p><strong>Θέμα</strong>: " . $row['subject'] . "</p>" 
             . "<p><strong>Περιεχόμενο</strong>: " . $row['text'] . "</p>";

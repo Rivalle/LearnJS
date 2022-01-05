@@ -13,6 +13,10 @@
   <!-- navigation bar -->
   <?php
         include_once 'navBar.php';
+        if (!$_SESSION["useremail"]){
+          header("location: Index.php");
+          exit();
+        }
   ?>
 
     <div class="box">
