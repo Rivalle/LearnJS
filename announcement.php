@@ -40,7 +40,7 @@
         </div>
 
         <button id="manage" type="submit" name="submit" class="btn" value="new">Ανάρτηση</button>
-        <button id="delete" type="button"  onclick="closeForm()">Close</button>
+        <button id="delete" type="button"  onclick="closeForm()">Κλείσιμο</button>
       </form>
     </div>
 
@@ -67,7 +67,7 @@
         </div>
 
         <button id="manage" type="submit" name="submit" class="btn" value="manage">Αλλαγή</button>
-        <button id="delete" type="button"  onclick="closeForm1()">Close</button>
+        <button id="delete" type="button"  onclick="closeForm1()">Κλείσιμο</button>
       </form>
     </div>
 

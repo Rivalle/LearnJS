@@ -11,7 +11,7 @@
     <a href="homework.php">Εργασίες </a>
     <?php 
         if ($_SESSION["userAdmin"] == 1){
-          echo "<a href='admin.php'>Διαχείρηση</a>";
+          echo "<a href='admin.php'>Διαχείριση</a>";
         }
     ?>
     <a href="assets/logout.php">Αποσύνδεση </a>

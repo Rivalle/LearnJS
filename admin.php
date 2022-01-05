@@ -22,7 +22,7 @@
   <div class="box news">
     <button onclick="openForm()" id="open-button">Νέος Χρήστης</button>
     
-    <div class="form-popup" id="newAssForm">
+    <div class="form-popup" id="newForm">
       <form action="assets/adminAsset.php" class="form-container" method="post">
         <h1>Νέος Χρήστης</h1>
 
@@ -45,17 +45,17 @@
           </label>
         </div>
 
-        <button id="manage" type="submit" name="submit" class="btn" value="new">Ανάρτηση</button>
-        <button id="delete" type="button"  onclick="closeForm()">Close</button>
+        <button id="manage" type="submit" name="submit" class="btn" value="new">Δημιουργία</button>
+        <button id="delete" type="button"  onclick="closeForm()">Κλείσιμο</button>
       </form>
     </div>
     <?php
-              if (isset($_GET["error"])) {
-                if ($_GET["error"] == "invalidemail") {
-                  echo "<p>Incorrect email form</p>";
-                }
-              }
-      ?>
+        if (isset($_GET["error"])) {
+          if ($_GET["error"] == "invalidemail") {
+             echo "<p>Incorrect email form</p>";
+          }
+        }
+    ?>
     <button onclick="openForm1()" id="open-button1">Τροποποίηση Χρήστη</button>
     
     <div class="form-popup" id="manageForm">
@@ -85,7 +85,7 @@
         </div>
 
         <button id="manage" type="submit" name="submit" class="btn" value="manage">Αλλαγή</button>
-        <button id="delete" type="button"  onclick="closeForm1()">Close</button>
+        <button id="delete" type="button"  onclick="closeForm1()">Κλείσιμο</button>
       </form>
     </div>
 
@@ -116,12 +116,12 @@
   <script type="text/javascript" src="js/top.js"></script>
   <script>
     function openForm() {
-      document.getElementById("newAssForm").style.display = "block";
+      document.getElementById("newForm").style.display = "block";
       document.getElementById("open-button").style.display = "none";
     }
 
     function closeForm() {
-      document.getElementById("newAssForm").style.display = "none";
+      document.getElementById("newForm").style.display = "none";
       document.getElementById("open-button").style.display = "block";
     }
     function openForm1() {
