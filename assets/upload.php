@@ -80,7 +80,7 @@
                 } 
                 else {
                     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], '../' . $targetFile)) {
-                        $query = "UPDATE `documents` SET `filePath` = '$title' WHERE `documents`.`docID` = '$id';";
+                        $query = "UPDATE `documents` SET `filePath` = '$targetFile' WHERE `documents`.`docID` = '$id';";
                         $queryrun = mysqli_query($conn,$query);
                         header("location: ../documents.php?error=filechanged");
                     } 
