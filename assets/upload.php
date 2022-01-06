@@ -1,6 +1,7 @@
 <?php
     require_once 'dbhandler.php';
     if (isset($_POST["submit"])) {
+        //Upload a new document
         if ($_POST["submit"] == "upload"){
             $title=$_POST["title"];
             $desc=$_POST["description"];
@@ -41,6 +42,7 @@
                 }
             }   
         }
+        //Manage a document
         else if ($_POST["submit"] == "manage"){
             $id = $_POST["id"];
             $title=$_POST["title"];
@@ -93,6 +95,7 @@
 
         }
     }
+    //Delete a document
     else if (isset($_POST["delete"])){
         $id = $_POST["delete"];
         $query = "DELETE FROM documents WHERE docID = '$id';";

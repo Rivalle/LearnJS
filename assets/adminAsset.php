@@ -3,6 +3,7 @@
 require_once 'dbhandler.php';
 
 if (isset($_POST["submit"])) {
+  //Create a new user
   if($_POST["submit"] == "new"){
 
     $email = $_POST["email"];
@@ -27,6 +28,7 @@ if (isset($_POST["submit"])) {
     $queryrun = mysqli_query($conn,$query);
     header("location: ../admin.php?new");
   }
+  //Manage a user
   else if($_POST["submit"] == "manage"){
     $id = $_POST["id"];
     $email = $_POST["email"];
@@ -64,6 +66,7 @@ if (isset($_POST["submit"])) {
     header("location: ../admin.php?managed");
     }
 }
+//Delete a user
 else if (isset($_POST["delete"])){
   $id = $_POST["delete"];
   $query = "DELETE FROM users WHERE usersID = '$id';";
@@ -71,6 +74,6 @@ else if (isset($_POST["delete"])){
   header("location: ../admin.php?deletedUser");
 }
 else {
-  header("location: ../start.php");
+  header("location: ../index.php");
   exit();
 }

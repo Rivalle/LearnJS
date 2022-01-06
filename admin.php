@@ -10,18 +10,19 @@
       <h1>Ανακοινώσεις</h1>
     </div>
    
-  <!-- navigation bar -->
+  <!-- Navigation bar -->
   <?php
         include_once 'navBar.php';
         require_once 'assets/dbhandler.php';
         if ($_SESSION["userAdmin"] !== 1){
-          header("location: start.php");
+          header("location: login.php");
         }
   ?>
 
   <div class="box news">
     <button onclick="openForm()" id="open-button">Νέος Χρήστης</button>
     
+    <!-- Create a user form -->
     <div class="form-popup" id="newForm">
       <form action="assets/adminAsset.php" class="form-container" method="post">
         <h1>Νέος Χρήστης</h1>
@@ -49,7 +50,9 @@
         <button id="delete" type="button"  onclick="closeForm()">Κλείσιμο</button>
       </form>
     </div>
+
     <?php
+        //error handler
         if (isset($_GET["error"])) {
           if ($_GET["error"] == "invalidemail") {
              echo "<p>Incorrect email form</p>";
@@ -58,6 +61,7 @@
     ?>
     <button onclick="openForm1()" id="open-button1">Τροποποίηση Χρήστη</button>
     
+    <!-- Managing a user form -->
     <div class="form-popup" id="manageForm">
       <form action="assets/adminAsset.php" class="form-container" method="post">
         <h1>Τροποποίηση Χρήστη</h1>
@@ -90,49 +94,30 @@
     </div>
 
     <?php
-          $sql = "SELECT * FROM users;";
-          $result = mysqli_query($conn,$sql);
-          while ($row = mysqli_fetch_assoc($result)) {
-            echo "<h2>Χρήστης " . $row['usersID'] . ":</h2>" 
-            . "<form action='assets/adminAsset.php' method='post'><button id='delete' name='delete' type='delete' value='" . $row['usersID'] . "'>Delete</button></form>"
-            . "<p><strong>Email</strong>: " . $row['usersEmail'] . "</p>" 
-            . "<p><strong>Password</strong>: " . $row['usersPass'] . "</p>" 
-            . "<p><strong>Όνομα</strong>: " . $row['usersName'] . "</p>" 
-            . "<p><strong>Επίθετο</strong>: " . $row['usersSur'] . "</p>";
-            if ($row['userAdmin'] == true){
-              echo "<p>Ο χρήστης είναι Καθηγητής.</p>";
-            }
-            else{
-                echo "<p>Ο χρήστης είναι Μαθητής.</p>";
-            }
-           }
-      ?>
+      //Show all users
+      $sql = "SELECT * FROM users;";
+      $result = mysqli_query($conn,$sql);
+      while ($row = mysqli_fetch_assoc($result)) {
+        echo "<h2>Χρήστης " . $row['usersID'] . ":</h2>" 
+        . "<form action='assets/adminAsset.php' method='post'><button id='delete' name='delete' type='delete' value='" . $row['usersID'] . "'>Delete</button></form>"
+        . "<p><strong>Email</strong>: " . $row['usersEmail'] . "</p>" 
+        . "<p><strong>Password</strong>: " . $row['usersPass'] . "</p>" 
+        . "<p><strong>Όνομα</strong>: " . $row['usersName'] . "</p>" 
+        . "<p><strong>Επίθετο</strong>: " . $row['usersSur'] . "</p>";
+        if ($row['userAdmin'] == true){
+          echo "<p>Ο χρήστης είναι Καθηγητής.</p>";
+        }
+        else{
+            echo "<p>Ο χρήστης είναι Μαθητής.</p>";
+        }
+      }
+    ?>
 
   </div>
+  <!-- Scroll to the top button -->
   <button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
 
   </body>
-
   <script type="text/javascript" src="js/top.js"></script>
-  <script>
-    function openForm() {
-      document.getElementById("newForm").style.display = "block";
-      document.getElementById("open-button").style.display = "none";
-    }
-
-    function closeForm() {
-      document.getElementById("newForm").style.display = "none";
-      document.getElementById("open-button").style.display = "block";
-    }
-    function openForm1() {
-      document.getElementById("manageForm").style.display = "block";
-      document.getElementById("open-button1").style.display = "none";
-    }
-
-    function closeForm1() {
-      document.getElementById("manageForm").style.display = "none";
-      document.getElementById("open-button1").style.display = "block";
-    }
-  </script>
-  
+  <script type="text/javascript" src="js/forms.js"></script>
 </html>

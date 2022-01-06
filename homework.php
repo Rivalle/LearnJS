@@ -15,124 +15,104 @@
         include_once 'navBar.php';
         require_once 'assets/dbhandler.php';
         if ($_SESSION["userAdmin"] !== 1){
-          header("location: docStudent.php");
+          header("location: hwstudent.php");
         }
   ?>
 
-  <div class="box news">
-    <button onclick="openForm()" id="open-button">Νέα Έργασία</button>
-    
-    <div class="form-popup" id="newForm">
-      <form action="assets/homeworkAsset.php" method="post" enctype="multipart/form-data" class="form-container">
-        
-        <h1>Νέα Έργασία</h1>
+    <div class="box news">
+      <button onclick="openForm()" id="open-button">Νέα Έργασία</button>
+      <!-- Create a new assignment form -->
+      <div class="form-popup" id="newForm">
+        <form action="assets/homeworkAsset.php" method="post" enctype="multipart/form-data" class="form-container">
+          
+          <h1>Νέα Έργασία</h1>
 
-        <label for="targets"><b>Στόχοι</b></label>
-        <input type="text" name="targets" required>
+          <label for="targets"><b>Στόχοι</b></label>
+          <input type="text" name="targets" required>
 
-        <label for="deliverables"><b>Παραδοτέα</b></label>
-        <textarea type="text" name="deliverables" rows=6 required></textarea>
+          <label for="deliverables"><b>Παραδοτέα</b></label>
+          <textarea type="text" name="deliverables" rows=6 required></textarea>
 
-        <label for="deadline"><b>Διορία</b></label>
-        <input type="text" name="deadline" required>
+          <label for="deadline"><b>Διορία</b></label>
+          <input type="text" name="deadline" required>
 
-        Select file to upload:
-        <input type="file" name="fileToUpload" id="fileToUpload">
-        <button type="submit" value="upload" id="manage" name="submit">Ανέβασμα</button>
+          Select file to upload:
+          <input type="file" name="fileToUpload" id="fileToUpload">
+          <button type="submit" value="upload" id="manage" name="submit">Ανέβασμα</button>
 
-        <button id="delete" type="button"  onclick="closeForm()">Κλείσιμο</button>
-      </form>
-    </div>
-    
-    <button onclick="openForm1()" id="open-button1">Τροποποίηση Εργασίας</button>
+          <button id="delete" type="button"  onclick="closeForm()">Κλείσιμο</button>
+        </form>
+      </div>
+      
+      <button onclick="openForm1()" id="open-button1">Τροποποίηση Εργασίας</button>
+      <!-- Manage a assignment form -->
+      <div class="form-popup" id="manageForm">
+        <form action="assets/homeworkAsset.php" method="post" enctype="multipart/form-data" class="form-container">
+          
+          <h1>Τροποποίηση Εργασίας</h1>
 
-    <div class="form-popup" id="manageForm">
-      <form action="assets/homeworkAsset.php" method="post" enctype="multipart/form-data" class="form-container">
-        
-        <h1>Τροποποίηση Εργασίας</h1>
+          <label for="id"><b>Επιλέξτε ποιά εργασία θέλετε να τροποποιήσετε</b></label>
+          <input type="text" name="id" required>
 
-        <label for="id"><b>Επιλέξτε ποιά εργασία θέλετε να τροποποιήσετε</b></label>
-        <input type="text" name="id" required>
+          <label for="targets"><b>Στόχοι</b></label>
+          <input type="text" name="targets">
 
-        <label for="targets"><b>Στόχοι</b></label>
-        <input type="text" name="targets">
+          <label for="deliverables"><b>Παραδοτέα</b></label>
+          <textarea type="text" name="deliverables" rows=6></textarea>
 
-        <label for="deliverables"><b>Παραδοτέα</b></label>
-        <textarea type="text" name="deliverables" rows=6></textarea>
+          <label for="deadline"><b>Διορία</b></label>
+          <input type="text" name="deadline">
 
-        <label for="deadline"><b>Διορία</b></label>
-        <input type="text" name="deadline">
+          Select file to upload:
+          <input type="file" name="fileToUpload" id="fileToUpload">
+          <button type="submit" value="manage" id="manage" name="submit">Τροποποίηση</button>
 
-        Select file to upload:
-        <input type="file" name="fileToUpload" id="fileToUpload">
-        <button type="submit" value="manage" id="manage" name="submit">Τροποποίηση</button>
-
-        <button id="delete" type="button"  onclick="closeForm1()">Κλείσιμο</button>
-      </form>
-    </div>
-    <?php
-        //Some error handlers
-        if (isset($_GET["error"])) {
-          if ($_GET["error"] == "exists") {
-             echo "<p>File already exists</p>";
-          }
-          else if($_GET["error"] == "toolarge") {
-            echo "<p>File too large</p>";
-          }
-          else if($_GET["error"] == "new") {
-            echo "<p>Document created!</p>";
-          }
-          else if($_GET["error"] == "notuploaded") {
-            echo "<p>Sorry, your file was not uploaded.</p>";
-          }
-          else if($_GET["error"] == "wrongtype") {
-            echo "<p>Your file extension must be .zip, .pdf or .docx</p>";
-          }
-          else if($_GET["error"] == "filechanged") {
-            echo "<p>The file has been successfully changed.</p>";
-          }
-        }
-    ?>
-
+          <button id="delete" type="button"  onclick="closeForm1()">Κλείσιμο</button>
+        </form>
+      </div>
       <?php
-          $sql = "SELECT * FROM assignments;";
-          $result = mysqli_query($conn,$sql);
-          while ($row = mysqli_fetch_assoc($result)) {
-            echo "<h2>" . $row['ergID'] . "η Εργασία" .  ":</h2>" 
-            . "<p><strong>Στόχοι</strong>: " . $row['targets'] . "</p>" 
-            . "<p><strong>Παραδοτέα</strong>: " . $row['deliverables'] . "</p>" 
-            . "<p><strong style='color:red;'>Διορία</strong>: " . $row["deadline"]
-            . "<form action='assets/homeworkAsset.php' method='post'><button id='delete' name='delete' type='delete' value='" . $row['ergID'] . "'>Delete</button></form>" 
-            . "<a href='" . $row['filePath'] . "' download='" . $row['targets'] . "'><button id='download' type='button'>Download</button></a>";
-           }
+          //Some error handlers
+          if (isset($_GET["error"])) {
+            if ($_GET["error"] == "exists") {
+              echo "<p>File already exists</p>";
+            }
+            else if($_GET["error"] == "toolarge") {
+              echo "<p>File too large</p>";
+            }
+            else if($_GET["error"] == "new") {
+              echo "<p>Document created!</p>";
+            }
+            else if($_GET["error"] == "notuploaded") {
+              echo "<p>Sorry, your file was not uploaded.</p>";
+            }
+            else if($_GET["error"] == "wrongtype") {
+              echo "<p>Your file extension must be .zip, .pdf or .docx</p>";
+            }
+            else if($_GET["error"] == "filechanged") {
+              echo "<p>The file has been successfully changed.</p>";
+            }
+          }
       ?>
 
-   <button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
+      <?php
+        //Show all assignments
+        $sql = "SELECT * FROM assignments;";
+        $result = mysqli_query($conn,$sql);
+        while ($row = mysqli_fetch_assoc($result)) {
+          echo "<h2>" . $row['ergID'] . "η Εργασία" .  ":</h2>" 
+          . "<p><strong>Στόχοι</strong>: " . $row['targets'] . "</p>" 
+          . "<p><strong>Παραδοτέα</strong>: " . $row['deliverables'] . "</p>" 
+          . "<p><strong style='color:red;'>Διορία</strong>: " . $row["deadline"]
+          . "<form action='assets/homeworkAsset.php' method='post'><button id='delete' name='delete' type='delete' value='" . $row['ergID'] . "'>Delete</button></form>" 
+          . "<a href='" . $row['filePath'] . "' download='" . $row['targets'] . "'><button id='download' type='button'>Download</button></a>";
+        }
+      ?>
       
-  </div>
-
-
+      <!-- Scroll to the top button -->
+      <button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
+        
+    </div>
   </body>
-
   <script type="text/javascript" src="js/top.js"></script>
-  <script>
-    function openForm() {
-      document.getElementById("newForm").style.display = "block";
-      document.getElementById("open-button").style.display = "none";
-    }
-
-    function closeForm() {
-      document.getElementById("newForm").style.display = "none";
-      document.getElementById("open-button").style.display = "block";
-    }
-    function openForm1() {
-      document.getElementById("manageForm").style.display = "block";
-      document.getElementById("open-button1").style.display = "none";
-    }
-
-    function closeForm1() {
-      document.getElementById("manageForm").style.display = "none";
-      document.getElementById("open-button1").style.display = "block";
-    }
-  </script>
+  <script type="text/javascript" src="js/forms.js"></script>
 </html>

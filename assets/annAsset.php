@@ -4,6 +4,7 @@
 require_once 'dbhandler.php';
 
 if (isset($_POST["submit"])) {
+  //Create an announcement
   if($_POST["submit"] == "new"){
 
     $subject = $_POST["subject"];
@@ -22,6 +23,7 @@ if (isset($_POST["submit"])) {
     $queryrun = mysqli_query($conn,$query);
     header("location: ../announcement.php?new" . $_POST["submit"]);
   }
+  //Manage an announcement
   else if($_POST["submit"] == "manage"){
     $id = $_POST["id"];
     $subject = $_POST["subject"];
@@ -50,6 +52,7 @@ if (isset($_POST["submit"])) {
     header("location: ../announcement.php?managed");
   }
 }
+//Delete an announcement
 else if (isset($_POST["delete"])){
   $id = $_POST["delete"];
   $query = "DELETE FROM announcements WHERE id = '$id';";

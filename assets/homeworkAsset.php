@@ -1,6 +1,7 @@
 <?php
     require_once 'dbhandler.php';
     if (isset($_POST["submit"])) {
+        //Upload a new assignment
         if ($_POST["submit"] == "upload"){
             $targets=$_POST["targets"];
             $deli=$_POST["deliverables"];
@@ -11,24 +12,27 @@
             $targetFile = $targetDir . basename($file);
             $uploadOk = 1;
             $fileType = pathinfo($file,PATHINFO_EXTENSION);
-            // Check if file already exists
+
+            //Check if file already exists
             if (file_exists($targetFile)) {
                 header("location: ../homework.php?error=exists");
                 exit();
             }
+            //Check file type
             if (!in_array($fileType, ['zip', 'pdf', 'docx', 'jpg'])){
                 header("location: ../homework.php?error=wrongtype");
                 exit();
             }
-            // Check file size
+            //Check file size
             if ($_FILES["fileToUpload"]["size"] > 500000000) {
                 header("location: ../homework.php?error=toolarge");
                 exit();
             }
+            //If error, terminate
             if ($uploadOk == 0) {
                 header("location: ../homework.php?error=not");
                 exit();
-            // if everything ok, upload
+            //If everything ok, upload
             } 
             else {
                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], '../' . $targetFile)) {
@@ -42,6 +46,7 @@
                 }
             }   
         }
+        //Manage an assignment
         else if ($_POST["submit"] == "manage"){
             $id = $_POST["id"];
             $targets=$_POST["targets"];
@@ -100,6 +105,7 @@
             exit();
         }
     }
+    //Delete an assignment
     else if (isset($_POST["delete"])){
         $id = $_POST["delete"];
         $query = "DELETE FROM assignments WHERE ergID = '$id';";

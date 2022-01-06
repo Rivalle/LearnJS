@@ -1,6 +1,7 @@
 //this php file is used by the contact page
 <?php
 
+//Send email to all tutors
 if (isset($_POST["submit"])) {
 
   $subject = $_POST["subject"];

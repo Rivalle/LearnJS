@@ -4,15 +4,15 @@
  ?>
 
 <div class="navbar">
-    <a class="active" href="start.php">Αρχική σελίδα</a>
-    <a href="announcement.php">Ανακοινώσεις</a>
-    <a href="communication.php">Επικοινωνία </a>
-    <a href="documents.php">Έγραφα μαθήματος</a>
-    <a href="homework.php">Εργασίες </a>
-    <?php 
-        if ($_SESSION["userAdmin"] == 1){
-          echo "<a href='admin.php'>Διαχείριση</a>";
-        }
-    ?>
-    <a href="assets/logout.php">Αποσύνδεση </a>
-  </div>
+  <a class="active" href="index.php">Αρχική σελίδα</a>
+  <a href="announcement.php">Ανακοινώσεις</a>
+  <a href="communication.php">Επικοινωνία </a>
+  <a href="documents.php">Έγραφα μαθήματος</a>
+  <a href="homework.php">Εργασίες </a>
+  <?php 
+    if ($_SESSION["userAdmin"] == 1){
+      echo "<a href='admin.php'>Διαχείριση</a>";
+    }
+  ?>
+  <a href="assets/logout.php">Αποσύνδεση </a>    
+</div>

@@ -10,7 +10,7 @@
       <h1>Ανακοινώσεις</h1>
     </div>
    
-  <!-- navigation bar -->
+  <!-- Navigation bar -->
   <?php
         include_once 'navBar.php';
         require_once 'assets/dbhandler.php';
@@ -22,7 +22,8 @@
   <div class="box news">
     <button onclick="openForm()" id="open-button">Νέα ανακοίνωση</button>
     
-    <div class="form-popup" id="newAssForm">
+    <!-- Create an announcement form -->
+    <div class="form-popup" id="newForm">
       <form action="assets/annAsset.php" class="form-container" method="post">
         <h1>Νέα ανακοίνωση</h1>
 
@@ -45,7 +46,8 @@
     </div>
 
     <button onclick="openForm1()" id="open-button1">Τροποποίηση ανακοίνωσης</button>
-    
+
+    <!-- Manage an announcement form -->
     <div class="form-popup" id="manageForm">
       <form action="assets/annAsset.php" class="form-container" method="post">
         <h1>Τροποποίηση ανακοίνωσης</h1>
@@ -72,45 +74,26 @@
     </div>
 
     <?php
-          $sql = "SELECT * FROM announcements;";
-          $result = mysqli_query($conn,$sql);
-          while ($row = mysqli_fetch_assoc($result)) {
-            echo "<h2>Ανακοίνωση " . $row['id'] . ":</h2>" 
-            . "<form action='assets/annAsset.php' method='post'><button id='delete' name='delete' type='delete' value='" . $row['id'] . "'>Delete</button></form>"
-            . "<p><strong>Ημερομηνία</strong>: " . $row['date'] . "</p>" 
-            . "<p><strong>Θέμα</strong>: " . $row['subject'] . "</p>" 
-            . "<p><strong>Περιεχόμενο</strong>: " . $row['text'] . "</p>";
-            if ($row['assignment'] == true){
-              echo "<p>Η εργασία έχει αναρτηθεί στην ιστοσελίδα <a href='homework.php'>Εργασίες</a> </p>";
-            }
-           }
-      ?>
+      //Show all announcements
+      $sql = "SELECT * FROM announcements;";
+      $result = mysqli_query($conn,$sql);
+      while ($row = mysqli_fetch_assoc($result)) {
+        echo "<h2>Ανακοίνωση " . $row['id'] . ":</h2>" 
+        . "<form action='assets/annAsset.php' method='post'><button id='delete' name='delete' type='delete' value='" . $row['id'] . "'>Delete</button></form>"
+        . "<p><strong>Ημερομηνία</strong>: " . $row['date'] . "</p>" 
+        . "<p><strong>Θέμα</strong>: " . $row['subject'] . "</p>" 
+        . "<p><strong>Περιεχόμενο</strong>: " . $row['text'] . "</p>";
+        if ($row['assignment'] == true){
+          echo "<p>Η εργασία έχει αναρτηθεί στην ιστοσελίδα <a href='homework.php'>Εργασίες</a> </p>";
+        }
+      }
+    ?>
 
   </div>
+  <!-- Scroll to the top button -->
   <button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
 
   </body>
-
   <script type="text/javascript" src="js/top.js"></script>
-  <script>
-    function openForm() {
-      document.getElementById("newAssForm").style.display = "block";
-      document.getElementById("open-button").style.display = "none";
-    }
-
-    function closeForm() {
-      document.getElementById("newAssForm").style.display = "none";
-      document.getElementById("open-button").style.display = "block";
-    }
-    function openForm1() {
-      document.getElementById("manageForm").style.display = "block";
-      document.getElementById("open-button1").style.display = "none";
-    }
-
-    function closeForm1() {
-      document.getElementById("manageForm").style.display = "none";
-      document.getElementById("open-button1").style.display = "block";
-    }
-  </script>
-  
+  <script type="text/javascript" src="js/forms.js"></script>
 </html>

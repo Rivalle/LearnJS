@@ -1,3 +1,4 @@
+//Javascript file for the top scroll button
 let topBtn = document.getElementById("topBtn");
 window.onscroll = function() {scrollFunction()};
 

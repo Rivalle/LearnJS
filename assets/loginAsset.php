@@ -8,12 +8,12 @@ if (isset($_POST["submit"])) {
 
   require_once 'dbhandler.php';
 
-  //checks if the email given exists
+  //Checks if the email given exists
   $sql = "SELECT * FROM users WHERE usersEmail = ?;";
   $stmt = mysqli_stmt_init($conn);
 
   if (!mysqli_stmt_prepare($stmt,$sql)) {
-    header("location: ../Index.php?error=stmtfailed");
+    header("location: ../login.php?error=stmtfailed");
     exit();
   }
   
@@ -21,7 +21,7 @@ if (isset($_POST["submit"])) {
   mysqli_stmt_execute($stmt);
 
   $result = mysqli_stmt_get_result($stmt);
-
+  //If it exists, proceed to login the user
   if ($row = mysqli_fetch_assoc($result)) {
     $emailexists = $row;
   }
@@ -30,12 +30,12 @@ if (isset($_POST["submit"])) {
   }
 
   if ($emailexists === false) {
-    header("location: ../Index.php?error=wrongloginname");
+    header("location: ../login.php?error=wrongloginname");
     exit();
   }
 
   if ($pass !== $emailexists["usersPass"]) {
-    header("location: ../Index.php?error=wrongloginpass");
+    header("location: ../login.php?error=wrongloginpass");
     exit();
   }
   else if ($pass === $emailexists["usersPass"]) {
@@ -46,11 +46,11 @@ if (isset($_POST["submit"])) {
     $_SESSION["username"] = $emailexists["usersName"];
     $_SESSION["usersur"] = $emailexists["usersSur"];
     $_SESSION["userAdmin"] = $emailexists["userAdmin"];
-    header("location: ../start.php");
+    header("location: ../index.php");
     exit();
   }
 }
 else{
-  header("location: ../Index.php");
+  header("location: ../login.php");
   exit();
 }
