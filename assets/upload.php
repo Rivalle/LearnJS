@@ -1,5 +1,5 @@
 <?php
-    require_once 'dbhandler.php';
+    require_once 'dbHandler.php';
     if (isset($_POST["submit"])) {
         //Upload a new document
         if ($_POST["submit"] == "upload"){
@@ -79,12 +79,13 @@
                     header("location: ../documents.php?error=not");
                     exit();
                 // if everything ok, upload
-                } 
+                }
                 else {
                     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], '../' . $targetFile)) {
                         $query = "UPDATE `documents` SET `filePath` = '$targetFile' WHERE `documents`.`docID` = '$id';";
                         $queryrun = mysqli_query($conn,$query);
                         header("location: ../documents.php?error=filechanged");
+						exit();
                     } 
                     else {
                         header("location: ../documents.php?error=notuploaded");
@@ -92,9 +93,12 @@
                     }
                 }
             }
-
-        }
-    }
+			else{
+				header("location: ../documents.php?error=changedText");
+                exit();
+       		}
+    	}
+	}
     //Delete a document
     else if (isset($_POST["delete"])){
         $id = $_POST["delete"];
@@ -106,4 +110,3 @@
         header("location: ../documents.php");
         exit();
       }
-    

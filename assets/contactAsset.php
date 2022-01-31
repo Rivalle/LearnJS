@@ -7,7 +7,7 @@ if (isset($_POST["submit"])) {
   $subject = $_POST["subject"];
   $message = $_POST["message"];
 
-  require_once 'dbhandler.php';
+  require_once 'dbHandler.php';
 
   $sql = "SELECT * FROM users;";
   $result = mysqli_query($conn,$sql);

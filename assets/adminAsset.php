@@ -1,6 +1,6 @@
 <?php
 
-require_once 'dbhandler.php';
+require_once 'dbHandler.php';
 
 if (isset($_POST["submit"])) {
   //Create a new user

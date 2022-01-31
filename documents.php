@@ -13,7 +13,7 @@
   <!-- Navigation bar -->
   <?php
         include_once 'navBar.php';
-        require_once 'assets/dbhandler.php';
+        require_once 'assets/dbHandler.php';
         if ($_SESSION["userAdmin"] !== 1){
           header("location: docStudent.php");
         }
@@ -87,6 +87,9 @@
             }
             else if($_GET["error"] == "filechanged") {
               echo "<p>The file has been successfully changed.</p>";
+            }
+			else if($_GET["error"] == "changedText") {
+              echo "<p>The document description has been successfully changed.</p>";
             }
           }
       ?>

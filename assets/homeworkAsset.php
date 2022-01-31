@@ -1,5 +1,5 @@
 <?php
-    require_once 'dbhandler.php';
+    require_once 'dbHandler.php';
     if (isset($_POST["submit"])) {
         //Upload a new assignment
         if ($_POST["submit"] == "upload"){

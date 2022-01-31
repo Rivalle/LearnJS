@@ -1,7 +1,7 @@
 //this php file is used by the announcement page
 <?php
 
-require_once 'dbhandler.php';
+require_once 'dbHandler.php';
 
 if (isset($_POST["submit"])) {
   //Create an announcement

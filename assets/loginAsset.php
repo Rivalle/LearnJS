@@ -6,7 +6,7 @@ if (isset($_POST["submit"])) {
   $useremail = $_POST["useremail"];
   $pass = $_POST["pass"];
 
-  require_once 'dbhandler.php';
+  require_once 'dbHandler.php';
 
   //Checks if the email given exists
   $sql = "SELECT * FROM users WHERE usersEmail = ?;";

@@ -13,7 +13,7 @@
   <!-- Navigation bar -->
   <?php
     include_once 'navBar.php';
-    require_once 'assets/dbhandler.php';
+    require_once 'assets/dbHandler.php';
     if (!$_SESSION["useremail"]){
       header("location: login.php");
       exit();
@@ -27,7 +27,7 @@
       $result = mysqli_query($conn,$sql);
       $sum = 1;
       while ($row = mysqli_fetch_assoc($result)) {
-        echo "<h2>Ανακοίνωση " . $row['id']+1 . ":</h2>" 
+        echo "<h2>Ανακοίνωση " . $row['id'] . ":</h2>" 
         . "<p><strong>Ημερομηνία</strong>: " . $row['date'] . "</p>" 
         . "<p><strong>Θέμα</strong>: " . $row['subject'] . "</p>" 
         . "<p><strong>Περιεχόμενο</strong>: " . $row['text'] . "</p>";

@@ -13,7 +13,7 @@
   <!-- Navigation bar -->
   <?php
         include_once 'navBar.php';
-        require_once 'assets/dbhandler.php';
+        require_once 'assets/dbHandler.php';
         if ($_SESSION["userAdmin"] !== 1){
           header("location: annStudent.php");
         }
